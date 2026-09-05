@@ -2,7 +2,9 @@
 
 A modern, fast personal portfolio website — built entirely in vanilla HTML, CSS, and JavaScript, with a full no-code admin dashboard to manage every part of the site. Firebase-ready for real-time sync across visitors.
 
-🔗 **Live site:** _add your Netlify URL here_
+🔗 Live site: createportfolio.edgeone.dev
+
+🔑 Admin demo access: visit /admin and log in with password demo (this is a public demo password for the showcase deployment — see ADMIN-GUIDE.md for setting a real, server-checked password on your own deployment)
 
 ---
 
