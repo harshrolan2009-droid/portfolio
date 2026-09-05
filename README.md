@@ -2,16 +2,18 @@
 
 A modern, fast personal portfolio website — built entirely in vanilla HTML, CSS, and JavaScript, with a full no-code admin dashboard to manage every part of the site. Firebase-ready for real-time sync across visitors.
 
-🔗 Live site: createportfolio.edgeone.dev
+🔗 **Live site:** [createportfolio.edgeone.dev](https://createportfolio.edgeone.dev/)
 
-🔑 Admin demo access: visit /admin and log in with password demo (this is a public demo password for the showcase deployment — see ADMIN-GUIDE.md for setting a real, server-checked password on your own deployment)
+🔑 **Admin demo access:** visit `/admin` and log in with password `demo` (this is a public demo password for the showcase deployment — see `ADMIN-GUIDE.md` for setting a real, server-checked password on your own deployment)
 
 ---
 
 ## ✨ Features
 
 ### 🖥️ Public Site
-- Dashboard-style animated homepage
+- Dashboard-style animated homepage with a hero section, live "code status" panel, tech-stack list, and live GitHub stats card
+- Animated **skills** section with progress bars per technology (HTML, CSS, JavaScript, React, Firebase, Git & GitHub)
+- **Services** section with numbered offering cards (website builds, web app prototypes, interface direction)
 - Dedicated pages: About, Projects, Skills, Services, Education, Experience, Testimonials, Contact, Resume
 - Smooth page-transition animations and motion effects
 - Fully responsive, mobile-first design
@@ -21,6 +23,7 @@ A modern, fast personal portfolio website — built entirely in vanilla HTML, CS
 ### 🔐 Admin CMS (`/admin`)
 - Secure server-side gated login (Netlify Edge Function + session-based auth)
 - Grouped sidebar navigation: **Dashboard · Content · Media & Messages · Site**
+- **Dashboard** — live counters for published projects, skills listed, messages, and visits from this browser, plus a content-mix donut chart and a recent activity feed
 - No-code content editing for:
   - Hero / About section
   - Projects
@@ -85,4 +88,4 @@ See `ADMIN-GUIDE.md` for admin login setup and `FIREBASE_SETUP.md` for connectin
 
 ## 📄 License
 
-Personal project — feel free to explore the code for learning purposes.
+MIT — see `LICENSE` for details.
