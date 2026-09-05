@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  publish = "dist/public"
+  functions = "netlify/functions"
+
+# Real server-side gate for the admin workspace. See ADMIN-GUIDE.md for the
+# ADMIN_PASSWORD / SESSION_SECRET environment variables this depends on.
+[[edge_functions]]
+  path = "/admin"
+  function = "admin-gate"
+
+[[edge_functions]]
+  path = "/admin/*"
+  function = "admin-gate"

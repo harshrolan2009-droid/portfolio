@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Sign in — Harsh Rolan Workspace</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="admin-body">
+<main class="login-page">
+  <section class="glass login-box">
+    <span class="eyebrow">Private workspace</span>
+    <h1>Welcome back.</h1>
+    <p>This is checked on the server, not in the browser — the workspace itself won't load until you're signed in.</p>
+    <form class="form" id="loginForm">
+      <div class="field">
+        <label for="admin-password">PASSWORD</label>
+        <input id="admin-password" type="password" name="password" required autocomplete="current-password" placeholder="Enter the workspace password">
+      </div>
+      <button class="btn primary" type="submit" id="loginBtn">Sign in</button>
+      <a class="btn" href="/">Return to site</a>
+    </form>
+    <small id="loginError" style="display:none;color:var(--danger,#ff6b6b);font:11px var(--mono);margin-top:6px"></small>
+  </section>
+</main>
+<script>
+  (function () {
+    var form = document.getElementById("loginForm");
+    var btn = document.getElementById("loginBtn");
+    var error = document.getElementById("loginError");
+    function showError(message) {
+      error.textContent = message;
+      error.style.display = "block";
+    }
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+      error.style.display = "none";
+      btn.disabled = true;
+      btn.textContent = "Checking…";
+      var password = new FormData(form).get("password");
+      var params = new URLSearchParams(location.search);
+      var next = params.get("next") || "/admin";
+      try {
+        var response = await fetch("/.netlify/functions/admin-login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ password: password })
+        });
+        if (response.status === 501) {
+          showError("The server admin password isn't configured yet — see ADMIN-GUIDE.md.");
+        } else if (!response.ok) {
+          var payload = await response.json().catch(function () { return {}; });
+          showError(payload.error || "Incorrect password.");
+        } else {
+          location.href = next;
+          return;
+        }
+      } catch (err) {
+        showError("Could not reach the server. Check your connection and try again.");
+      }
+      btn.disabled = false;
+      btn.textContent = "Sign in";
+    });
+  })();
+</script>
+</body>
+</html>
